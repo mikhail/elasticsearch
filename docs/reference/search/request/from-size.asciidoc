@@ -22,6 +22,24 @@ GET /_search
 --------------------------------------------------
 // CONSOLE
 
+For aggregations:
+
+[source,js]
+--------------------------------------------------
+GET /_search
+{
+    "aggs" : {
+        "group_by_user" : {
+            "terms" : {
+                "field" : "user",
+                "from" : 0, "size" : 10
+            }
+        }
+    }
+}
+--------------------------------------------------
+// CONSOLE
+
 
 Note that `from` + `size` can not be more than the `index.max_result_window`
 index setting which defaults to 10,000. See the <<search-request-scroll,Scroll>> or <<search-request-search-after,Search After>>
